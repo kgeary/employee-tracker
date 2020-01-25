@@ -1,4 +1,5 @@
--- Get All Employees, Their Position, and their Manager's Name
+-- Get All Employees by Dept
+
 USE employee_trackerDB;
 
 SELECT 
@@ -17,3 +18,4 @@ FROM
     department ON role.department_id = department.id
         LEFT JOIN
     employee e2 ON e1.manager_id = e2.id
+    WHERE department.name = "Engineering"
