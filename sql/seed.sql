@@ -1,3 +1,5 @@
+USE employee_trackerDB;
+
 --- Seed Departments ---
 INSERT INTO Department (name) VALUES ("Accounting");
 INSERT INTO Department (name) VALUES ("Advertising");
@@ -24,8 +26,8 @@ INSERT INTO Role (title, salary, department_id) values ("Sales Manager", 150000,
 
 --- Seed Employees
 INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Adam", "Anderson", 3, null);
-INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Bill", "Bower", 1, 2);
+INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Bill", "Bower", 1, 1);
 INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Charlie", "Cats", 9, null);
-INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Charlie", "Cats", 6, 3);
 INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Doug", "Dewey", 6, 3);
 INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Ed", "Eerie", 6, 1);
+INSERT INTO Employee (first_name, last_name, role_id, manager_id) values ("Fred", "Funk", 7, 2);

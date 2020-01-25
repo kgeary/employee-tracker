@@ -19,22 +19,59 @@ class DB {
     });
   }
 
+  /**
+   * Establish a connection to the database 
+   * (This is not-required prior to query)
+   * 
+   * @returns {Promise} Promise to connect
+   */
   connect() {
-    this.connection.connect(this.afterConnection());
-  }
-  // THIS MIGHT HAVE ASYNC ISSUES - CALLBACK METHOD?
-  afterConnection() {
-    connection.query("SELECT * FROM products", function(err, res) {
-      if (err) throw err;
-      console.log(res);
-      connection.end();
+    return new Promise(function(resolve, reject) {
+      this.connection.connect(function(err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          reject(err);
+        } else {
+          console.log('connected');
+          resolve();
+        }
+      });
     });
   }
 
-  getEmployees() {
-    this.connection.query("SELECT * FROM employees", function(err, res) {
-      if (err) throw err;
-      console.log(res);
+  /**
+   * Query the database (Can also be used for delete, insert, update)
+   *
+   * @param {string} sql A query statement for the database 
+   *
+   * @returns {Promise} Promise to execute sql
+   */
+  query(sql) {
+    return new Promise(function(resolve, reject) {
+      this.connection.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+  /**
+   * Close the database connection
+   * 
+   * @returns {Promise} Promise to close the connection
+   */ 
+  close() {
+    return new Promise(function(resolve, reject) {
+      this.connection.end(function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
     });
   }
 }
