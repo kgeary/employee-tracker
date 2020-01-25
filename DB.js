@@ -1,21 +1,13 @@
 const mysql = require("mysql");
 
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("connected as id " + connection.threadId);
-  afterConnection();
-});
-
-
-
 class DB {
   constructor() {
     this.connection = mysql.createConnection({
       host: "localhost",
       port: 3306,
       user: "root",
-      password: "734512",
-      database: "employeeDB"
+      password: process.env.DB_PW,
+      database: "employee_trackerDB"
     });
   }
 
@@ -26,13 +18,13 @@ class DB {
    * @returns {Promise} Promise to connect
    */
   connect() {
-    return new Promise(function(resolve, reject) {
-      this.connection.connect(function(err) {
+    return new Promise((resolve, reject) => {
+      this.connection.connect((err) => {
         if (err) {
-          console.error('error connecting: ' + err.stack);
+          console.error('Error Connecting: ' + err.stack);
           reject(err);
         } else {
-          console.log('connected');
+          console.log(`Connected (Thread ID=${this.connection.threadId})`);
           resolve();
         }
       });
@@ -47,8 +39,8 @@ class DB {
    * @returns {Promise} Promise to execute sql
    */
   query(sql) {
-    return new Promise(function(resolve, reject) {
-      this.connection.query(sql, function(err, result) {
+    return new Promise((resolve, reject) => {
+      this.connection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -62,10 +54,10 @@ class DB {
    * Close the database connection
    * 
    * @returns {Promise} Promise to close the connection
-   */ 
+   */
   close() {
-    return new Promise(function(resolve, reject) {
-      this.connection.end(function(err) {
+    return new Promise((resolve, reject) => {
+      this.connection.end((err) => {
         if (err) {
           reject(err);
         } else {
