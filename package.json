@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/kgeary/employee-tracker#readme",
   "dependencies": {
-    "inquirer": "^7.0.3"
+    "console.table": "^0.10.0",
+    "inquirer": "^7.0.3",
+    "mysql": "^2.18.1"
   }
 }
