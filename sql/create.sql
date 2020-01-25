@@ -5,12 +5,12 @@ USE employee_trackerDB;
 
 CREATE TABLE Department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30)
+  name VARCHAR(30) UNIQUE
 );
 
 CREATE TABLE Role (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(30),
+  title VARCHAR(30) UNIQUE,
   salary DECIMAL,
   department_id INT,
   FOREIGN KEY (department_id) REFERENCES Department(id)
@@ -23,5 +23,6 @@ CREATE TABLE Employee (
   role_id INT NOT NULL,
   manager_id INT,
   FOREIGN KEY (role_id) REFERENCES Role(id),
-  FOREIGN KEY (manager_id) REFERENCES Employee(id)
+  FOREIGN KEY (manager_id) REFERENCES Employee(id),
+  UNIQUE(first_name, last_name)
 );
