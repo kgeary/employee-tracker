@@ -12,3 +12,4 @@ FROM
     employee e1
         LEFT JOIN
     employee e2 ON e1.manager_id = e2.id
+ORDER BY id

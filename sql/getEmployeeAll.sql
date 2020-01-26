@@ -11,9 +11,10 @@ SELECT
     CONCAT(e2.first_name, " ", e2.last_name) AS 'Manager'
 FROM
     employee e1
-        JOIN
+JOIN
     role ON e1.role_id = role.id
-        JOIN
+JOIN
     department ON role.department_id = department.id
-        LEFT JOIN
+LEFT JOIN
     employee e2 ON e1.manager_id = e2.id
+ORDER BY id

@@ -9,7 +9,7 @@ SELECT
     role.title AS Position,
     role.salary AS Salary,
     department.name AS Department,
-    CONCAT(e2.first_name, " ", e2.last_name) AS 'Manager'
+    CONCAT(e2.first_name, ' ', e2.last_name) AS 'Manager'
 FROM
     employee e1
         JOIN
@@ -18,4 +18,6 @@ FROM
     department ON role.department_id = department.id
         LEFT JOIN
     employee e2 ON e1.manager_id = e2.id
-    WHERE department.name = "Engineering"
+WHERE
+    department.name = 'Engineering'
+ORDER BY id

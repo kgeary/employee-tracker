@@ -5,5 +5,6 @@ SELECT
     employee.id, first_name, last_name, role.title
 FROM
     employee
-        JOIN
+JOIN
     role ON employee.role_id = role.id
+ORDER BY id
