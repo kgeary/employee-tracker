@@ -7,8 +7,7 @@ async function init() {
   } catch (err) {
     console.log("ERROR", err);
   } finally {
-    await db.close()
-    console.log("ALL DONE");
+    console.log("Application Exiting");
   }
 };
 
