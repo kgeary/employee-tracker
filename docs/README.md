@@ -26,4 +26,4 @@ The employee tracker offers the following options:
 * Departments
 
 # Screenshot
-<img src="/images/screenshot.png" border="1px solid black" width="600px" alt="A screenshot of the employee tracker in use">
+<img src="/docs/images/screenshot.png" border="1px solid black" width="600px" alt="A screenshot of the employee tracker in use">
