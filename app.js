@@ -1,9 +1,9 @@
 const out = require("./lib/out");
-const input = require("./lib/input");
+const tracker = require("./lib/tracker");
 
 async function init() {
   try {
-    await input.prompt();
+    await tracker.run();
   } catch (err) {
     out.error("ERROR", err);
   } finally {
